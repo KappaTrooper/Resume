@@ -1,0 +1,375 @@
+/* ------------------------------
+   Base + Theme
+--------------------------------*/
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+:root{
+  --bg: #0a0f1f;
+  --panel: #0d1326;
+  --muted: #94a3b8;
+  --text: #e5e7eb;
+  --heading: #f1f5f9;
+  --border: rgba(148,163,184,.15);
+  --accent: #22d3ee;           /* cyan */
+  --accent-2: #38bdf8;         /* sky */
+  --chip-bg: rgba(34,211,238,.12);
+  --shadow: 0 10px 30px rgba(2,6,23,.35);
+  --radius: 14px;
+}
+
+html, body {
+  height: 100%;
+  background: radial-gradient(1200px 600px at 20% -10%, rgba(56,189,248,.15), transparent 60%),
+              radial-gradient(900px 500px at 110% 10%, rgba(34,211,238,.10), transparent 60%),
+              var(--bg);
+  color: var(--text);
+  font: 400 16px/1.7 system-ui, -apple-system, "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  margin: 0;
+}
+/* Glow Effect for Mouse */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0; 
+  background:
+    radial-gradient(550px at var(--mx) var(--my), rgba(56,189,248,.18), transparent 60%),
+    radial-gradient(900px at calc(var(--mx) + 20%) calc(var(--my) - 20%), rgba(34,211,238,.10), transparent 70%),
+    radial-gradient(1200px 800px at 50% 10%, rgba(56,189,248,.06), transparent 70%),
+    var(--bg);
+  filter: saturate(115%);
+}
+
+
+/* fluid type for headings */
+h1,h2,h3 { color: var(--heading); margin: 0 0 .4rem }
+h1 { font-size: clamp(28px, 4vw, 44px); letter-spacing: .3px; }
+h2 { font-size: clamp(16px, 2vw, 18px); font-weight: 600; color: var(--muted); }
+h3 { font-size: 15px; font-weight: 600; letter-spacing: .2px; color: var(--heading); }
+
+p { margin: 0 0 1rem; color: var(--text); }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ------------------------------
+   Banner Info
+--------------------------------*/
+.banner-wrapper{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1.25rem;
+}
+
+.banner{
+  display: grid;
+  width: 100%;
+  max-width: 1200px;
+  column-gap: 32px;
+  grid-template-columns: clamp(260px, 28vw, 360px) 1fr;
+}
+
+/* Panels */
+.left_banner,
+.right_banner{
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.00));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: saturate(120%) blur(0.5px);
+}
+
+/* ------------------------------
+   Left Column (About / Social)
+--------------------------------*/
+.left_banner{
+  position: sticky;
+  top: 32px;
+  height: fit-content;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.left_banner .name{
+  line-height: 1.1;
+}
+
+.left_banner .title{
+  margin-top: .1rem;
+  color: var(--muted);
+}
+
+.left_banner .description{
+  color: #cbd5e1;
+}
+
+
+/* download Resume btn */
+
+/* Button container in the left panel */
+.left_banner .actions{
+  display: flex;
+  margin-bottom: 6px;
+}
+
+/* Base button */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(148,163,184,.18);
+  background: linear-gradient(180deg, rgba(148,163,184,.08), rgba(148,163,184,.03));
+  color: #e5e7eb;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: .2px;
+  transition: transform .15s ease, border-color .15s ease, background .15s ease, box-shadow .15s ease;
+}
+
+.btn i{ font-size: 16px; }
+
+/* Accent hover state */
+.btn-download:hover{
+  transform: translateY(-1px);
+  border-color: rgba(56,189,248,.35);
+  background: linear-gradient(180deg, rgba(56,189,248,.18), rgba(56,189,248,.07));
+  box-shadow: 0 8px 24px rgba(56,189,248,.18);
+  color: #e6f9ff;
+}
+
+/* Keyboard focus */
+.btn:focus-visible{
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(56,189,248,.35);
+  border-color: rgba(56,189,248,.55);
+}
+
+
+/* Social Stuff */
+.social ul {
+  list-style: none;
+  display: flex;
+  gap: 14px;
+  padding: 0;
+  margin: 0;
+}
+
+.social li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(148,163,184,.08);
+  border: 1px solid rgba(148,163,184,.15);
+  color: #e5e7eb;
+  font-size: 18px;
+  transition: background .2s ease, transform .2s ease, color .2s ease;
+}
+
+.social li a:hover {
+  background: rgba(56,189,248,.15);
+  color: #38bdf8;
+  transform: translateY(-2px);
+}
+
+
+/* ------------------------------
+   Right Column
+--------------------------------*/
+.right_banner{
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: stretch;
+}
+
+/* Intro/Profile card */
+.profile{
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(148,163,184,.06), rgba(148,163,184,.03));
+}
+
+/*  blocks effect */
+.experience{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Job row → timeline */
+.job{
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 18px;
+  width: 100%;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(148,163,184,.05), rgba(148,163,184,.02));
+  position: relative;
+}
+
+/* left accent bar */
+.job::before{
+  content: "";
+  position: absolute;
+  left: 4;
+  top: 14px;
+  bottom: 14px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  opacity: .75;
+}
+
+/* Date column */
+.job_date p{
+  color: var(--muted);
+  letter-spacing: .2px;
+}
+
+/* Role + bullets */
+.job_info .job_title p{
+  font-weight: 600;
+  color: var(--heading);
+  margin-bottom: .25rem;
+}
+
+.job_description ul{
+  margin: .25rem 0 .6rem;
+  padding-left: 18px;
+}
+.job_description li{
+  margin: .35rem 0;
+  color: #d1d5db;
+}
+
+/* Tech “pills” */
+.job_skills p{
+  margin: .2rem 0 0;
+}
+.job_skills p{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.job_skills p > *{
+  /* if you add <span> around each skill, this styles pills */
+}
+.job_skills p,
+.job_skills p span{
+  font-size: 12px;
+  color: #a5b4fc; /* soft indigo for variety */
+}
+.job_skills p span{
+  padding: 6px 10px;
+  background: var(--chip-bg);
+  border: 1px solid rgba(56,189,248,.25);
+  border-radius: 999px;
+  color: #c7d2fe;
+}
+
+/* You can keep your comma-separated skills; the rule below auto-pillifies commas */
+.job_skills p{
+  --space: 8px;
+}
+.job_skills p{
+  display: inline-block;
+  background: transparent;
+  padding: 0;
+}
+.job_skills p::after{ content:""; display:block; }
+
+/* Optional helper: turn “React, JS, …” into pills without editing HTML */
+.job_skills p{
+  white-space: normal;
+}
+.job_skills p{
+  background: none;
+}
+.job_skills p{
+  /* split commas with CSS trick via shadow DOM not reliable — best is to wrap in spans in HTML.
+     If you want perfect pills, change your HTML to:
+     <div class="job_skills"><p><span>React</span><span>JavaScript</span>...</p></div> */
+}
+
+/* Education + Skills sections */
+.education, .skills{
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  background: linear-gradient(180deg, rgba(148,163,184,.05), rgba(148,163,184,.02));
+}
+.education ul{ margin: .5rem 0 0; padding-left: 18px; }
+.education li{ margin: .25rem 0; color: #d1d5db; }
+
+/* Small section headings inside cards */
+.profile h3,
+.education h3,
+.skills h3{
+  margin-bottom: .25rem;
+  color: var(--heading);
+  font-weight: 700;
+  letter-spacing: .2px;
+}
+
+/* ------------------------------
+   Hover focus states
+--------------------------------*/
+.job:hover,
+.profile:hover,
+.education:hover,
+.skills:hover{
+  border-color: rgba(56,189,248,.25);
+  transform: translateY(-1px);
+  transition: border-color .15s ease, transform .15s ease;
+}
+
+/* ------------------------------
+   Responsiveness
+--------------------------------*/
+@media (max-width: 980px){
+  .banner{
+    grid-template-columns: 1fr;
+    row-gap: 22px;
+  }
+  .left_banner{ position: static; }
+}
+
+@media (max-width: 640px){
+  .job{
+    grid-template-columns: 1fr;
+  }
+  .job::before{
+    top: 0; bottom: 0;
+  }
+  .profile, .education, .skills{ padding: 16px; }
+}
+
+hr{
+  border: none; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 1.25rem 0;
+}
+
+.code, code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  background: rgba(148,163,184,.08);
+  padding: 2px 6px; border-radius: 6px;
+  border: 1px solid var(--border);
+}
