@@ -17,15 +17,26 @@
           <h2 class="title">UI/UX-Focused Web Developer — I don’t just build websites, I build measurable growth through design and code.</h2> <br>
         </div>
 
-<!-- THEME TOGGLE -->
-<div class="actions theme-switch">
-  <button class="btn btn-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Toggle light and dark theme">
-    <i class="fa-solid fa-moon" aria-hidden="true"></i>
-    <span>Dark</span>
-  </button>
-</div>
+        <!-- THEME TOGGLE -->
+        <div class="actions theme-switch">
+          <button
+            class="btn btn-toggle"
+            id="themeToggle"
+            type="button"
+            aria-pressed="false"
+            aria-label="Switch to Dark Mode"
+            title="Switch to Dark Mode"
+          >
+            <i class="fa-solid fa-moon" aria-hidden="true"></i>
+            <span class="mode-text">Switch to Dark Mode</span>
+          </button>
+        </div>
 
+        <!-- Screen reader announcer -->
+        <div id="themeAnnouncer" class="visually-hidden" aria-live="polite"></div>
 
+        <!-- Visual toast -->
+        <div id="themeToast" role="status" aria-live="polite" class="theme-toast" hidden></div>
 
         <!-- PDF DOWNLOAD BUTTON -->
         <div class="actions">
