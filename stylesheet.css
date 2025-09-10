@@ -204,6 +204,10 @@ a:hover { text-decoration: underline; }
   background: linear-gradient(180deg, rgba(148,163,184,.06), rgba(148,163,184,.03));
 }
 
+.profile h3 {
+  font-size: 24px;
+}
+
 /*  blocks effect */
 .experience{
   display: flex;
@@ -249,7 +253,13 @@ a:hover { text-decoration: underline; }
   color: var(--heading);
   margin-bottom: .25rem;
 }
+.jobRole {
+  font-size: 18px;
+}
 
+.jobCompany {
+  font-style: italic;
+}
 .job_description ul{
   margin: .25rem 0 .6rem;
   padding-left: 18px;
