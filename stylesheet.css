@@ -259,6 +259,7 @@ a:hover { text-decoration: underline; }
 
 .jobCompany {
   font-style: italic;
+  font-weight: 600;
 }
 .job_description ul{
   margin: .25rem 0 .6rem;
