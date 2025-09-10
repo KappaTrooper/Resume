@@ -81,29 +81,30 @@
     root.setAttribute('data-theme', mode === 'light' ? 'light' : 'dark');
   }
 
-  // Update button text/icon/ARIA. Label describes the ACTION the button will perform.
-  function updateToggleUI(currentMode, skipToast){
-    const icon  = btn.querySelector('i');
-    const label = btn.querySelector('.mode-text') || btn.querySelector('span');
+ // Update button text/icon/ARIA. Label describes the ACTION the button will perform.
+function updateToggleUI(currentMode, skipToast){
+  const icon  = btn.querySelector('i');
+  const label = btn.querySelector('.mode-text') || btn.querySelector('span');
 
-    const nextActionLabel = currentMode === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode';
-    if (label) label.textContent = nextActionLabel;
-    btn.setAttribute('aria-label', nextActionLabel);
-    btn.title = nextActionLabel;
+  const nextActionLabel = currentMode === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode';
+  if (label) label.textContent = nextActionLabel;
+  btn.setAttribute('aria-label', nextActionLabel);
+  btn.title = nextActionLabel;
 
-    // Icon reflects the CURRENT mode (sun = light, moon = dark)
-    if (icon){
-      icon.classList.remove('fa-sun','fa-moon');
-      icon.classList.add(currentMode === 'light' ? 'fa-sun' : 'fa-moon');
-    }
-
-    // aria-pressed indicates "dark mode is active"
-    btn.setAttribute('aria-pressed', currentMode === 'dark' ? 'true' : 'false');
-
-    // Feedback
-    announce(currentMode === 'light' ? 'Light mode enabled' : 'Dark mode enabled');
-    if (!skipToast) showToast(currentMode === 'light' ? 'Light mode on' : 'Dark mode on');
+  // 🔄 Icon reflects the ACTION (moon = switch to dark, sun = switch to light)
+  if (icon){
+    icon.classList.remove('fa-sun','fa-moon');
+    icon.classList.add(currentMode === 'light' ? 'fa-moon' : 'fa-sun');
   }
+
+  // aria-pressed indicates "dark mode is active"
+  btn.setAttribute('aria-pressed', currentMode === 'dark' ? 'true' : 'false');
+
+  // Feedback
+  announce(currentMode === 'light' ? 'Light mode enabled' : 'Dark mode enabled');
+  if (!skipToast) showToast(currentMode === 'light' ? 'Light mode on' : 'Dark mode on');
+}
+
 
   function announce(text){
     announcer.textContent = '';
