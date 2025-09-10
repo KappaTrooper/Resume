@@ -384,3 +384,88 @@ hr{
   padding: 2px 6px; border-radius: 6px;
   border: 1px solid var(--border);
 }
+
+
+
+/* ============================
+   LIGHT THEME — white bg + amber accents + subtle glow
+============================ */
+:root[data-theme="light"]{
+  --bg: #ffffff;                       /* pure white background */
+  --panel: #ffffff;
+  --muted: #6b7280;                    /* gray-500 */
+  --text: #0f172a;                     /* slate-900 */
+  --heading: #0f172a;
+  --border: rgba(15,23,42,.08);        /* lighter borders */
+  --accent: #f59e0b;                   /* amber-500 (timeline bar left) */
+  --accent-2: #fbbf24;                 /* amber-400 (links/hover) */
+  --chip-bg: rgba(251,191,36,.12);     /* amber-300 bg for pills */
+  --shadow: 0 8px 24px rgba(15,23,42,.06);
+}
+
+/* Flat white canvas in light mode (remove blue gradients) */
+:root[data-theme="light"] html,
+:root[data-theme="light"] body{
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Softer, smaller AMBER glow that follows the cursor */
+:root[data-theme="light"] body::before{
+  background:
+    radial-gradient(420px at var(--mx) var(--my), rgba(245,158,11,.10), transparent 60%),
+    radial-gradient(700px at calc(var(--mx) + 10%) calc(var(--my) - 12%), rgba(251,191,36,.06), transparent 70%),
+    var(--bg);
+  filter: saturate(110%);
+  opacity: .45;  /* make the glow less noticeable */
+}
+
+/* Cards stay white with subtle borders/shadows */
+:root[data-theme="light"] .left_banner,
+:root[data-theme="light"] .right_banner,
+:root[data-theme="light"] .profile,
+:root[data-theme="light"] .education,
+:root[data-theme="light"] .skills,
+:root[data-theme="light"] .job{
+  background: #ffffff;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+/* Links & hovers use amber instead of blue */
+:root[data-theme="light"] a { color: #b45309; }                 /* amber-700 for readability */
+:root[data-theme="light"] a:hover { color: #92400e; }
+
+/* Download button hover in amber */
+:root[data-theme="light"] .btn-download:hover{
+  border-color: rgba(245,158,11,.35);
+  background: linear-gradient(180deg, rgba(245,158,11,.18), rgba(245,158,11,.07));
+  box-shadow: 0 8px 24px rgba(245,158,11,.18);
+  color: #1f2937;
+}
+
+/* Social icon chips in light mode */
+:root[data-theme="light"] .social li a{
+  background: rgba(15,23,42,.03);
+  border: 1px solid var(--border);
+  color: #0f172a;
+}
+:root[data-theme="light"] .social li a:hover{
+  background: rgba(245,158,11,.15);
+  color: #b45309;
+}
+
+/* Timeline accent bar already uses --accent/--accent-2, so it turns amber automatically.
+   (This is your .job::before gradient.) */
+
+/* Job role/company contrast in light mode */
+:root[data-theme="light"] .job_info .job_title p{ color: var(--heading); }
+:root[data-theme="light"] .jobRole{ color: #111827; }           /* nearly black */
+:root[data-theme="light"] .jobCompany{ color: #6b7280; }        /* muted gray */
+:root[data-theme="light"] .job_description li{
+  margin: .35rem 0;
+  color: #000000;
+}
+:root[data-theme="light"] .btn {
+  color: #000000;
+}
