@@ -283,7 +283,7 @@ a:hover { text-decoration: underline; }
   /* if you add <span> around each skill, this styles pills */
 }
 .job_skills p,
-.job_skills p span{
+.job_skills p {
   font-size: 12px;
   color: #a5b4fc; /* soft indigo for variety */
 }
@@ -469,3 +469,15 @@ hr{
 :root[data-theme="light"] .btn {
   color: #000000;
 }
+:root[data-theme="light"] .education,
+:root[data-theme="light"] .education h3,
+:root[data-theme="light"] .education li {
+  color: #000000;
+}
+/* Light mode job skills text (amber instead of blue/indigo) */
+:root[data-theme="light"] .job_skills p {
+  color: #b45309;   /* amber-700 */
+  font-weight: 500;
+}
+
+
